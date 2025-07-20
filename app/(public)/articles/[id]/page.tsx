@@ -26,13 +26,13 @@ export default async function ArticleById({ params }: { params: Promise<{ id: st
 
   return (
     <div className="py-12 px-4 mx-auto max-w-screen-lg min-h-[calc(100vh-(4.25rem+3.719rem))] md:min-h-[calc(100vh-(4.25rem+3.469rem))] flex flex-col gap-12">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col items-center gap-8">
         <img src="/images/logo.png" alt="logo" className="size-24" />
 
         <div className="flex flex-col gap-4">
-          <p className="text-3xl font-bold text-app-text-color leading-14">{data.title}</p>
+          <p className="text-3xl font-bold text-app-text-color leading-14 text-center">{data.title}</p>
 
-          <p className="text-base text-app-text-color">
+          <p className="text-base text-app-text-color text-center">
             By <span className="underline">{data.user.name}</span>
             <span>
               {" "}
@@ -69,7 +69,7 @@ function ArticleContentRenderer({ blocks }: { blocks: any[] }) {
             const text = block.data.text;
 
             return (
-              <p key={key} className="text-2xl text-app-text-color font-bold">
+              <p key={key} className="text-2xl text-app-text-color font-bold text-justify">
                 {enhanceLinks(text)}
               </p>
             );
@@ -77,7 +77,7 @@ function ArticleContentRenderer({ blocks }: { blocks: any[] }) {
           case "paragraph": {
             const text = block.data.text;
 
-            return <p key={key} className="text-base text-app-text-color leading-10" dangerouslySetInnerHTML={{ __html: enhanceLinks(text) }} />;
+            return <p key={key} className="text-base text-app-text-color leading-10 text-justify" dangerouslySetInnerHTML={{ __html: enhanceLinks(text) }} />;
           }
 
           case "quote": {
@@ -86,7 +86,7 @@ function ArticleContentRenderer({ blocks }: { blocks: any[] }) {
 
             return (
               <blockquote key={key} className="pl-4 border-l-4 text-base text-gray-600 italic">
-                <p className="text-app-text-color" dangerouslySetInnerHTML={{ __html: enhanceLinks(text) }} />
+                <p className="text-app-text-color text-justify" dangerouslySetInnerHTML={{ __html: enhanceLinks(text) }} />
 
                 {block.data.caption && <footer className="mt-2 text-sm text-right text-gray-500">— {enhanceLinks(caption)}</footer>}
               </blockquote>
@@ -104,7 +104,7 @@ function ArticleContentRenderer({ blocks }: { blocks: any[] }) {
                       <input type="checkbox" checked={item.meta.checked} readOnly className="mt-1 accent-brand" />
 
                       <span
-                        className="text-base"
+                        className="text-base text-justify"
                         dangerouslySetInnerHTML={{
                           __html: typeof item.content === "string" ? enhanceLinks(item.content) : enhanceLinks(JSON.stringify(item.content)),
                         }}
@@ -125,7 +125,7 @@ function ArticleContentRenderer({ blocks }: { blocks: any[] }) {
                 {items.map((item: any, idx: number) => (
                   <li
                     key={idx}
-                    className={isSingleItem ? "text-base" : "text-base"}
+                    className={isSingleItem ? "text-base text-justify" : "text-base text-justify"}
                     dangerouslySetInnerHTML={{
                       __html: typeof item.content === "string" ? enhanceLinks(item.content) : enhanceLinks(JSON.stringify(item.content)),
                     }}
