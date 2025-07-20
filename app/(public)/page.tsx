@@ -37,9 +37,9 @@ export default async function Home() {
       <section className="pb-4 border-b border-gray-200 flex flex-col gap-8">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col items-center gap-8">
-            <img src="/images/logo.png" alt="logo" className="size-24" />
+            <img src="/images/logo.png" alt="logo" className="size-16" />
 
-            <p className="text-lg leading-8 italic text-justify">
+            <p className="text-[0.5rem] md:text-sm leading-8 italic text-center">
               “Revolusi timbul dengan sendirinya, sebagai hasil dari berbagai keadaan”, begitu kata Tan Malaka, yang kini Under Socpol himpun sebagai prinsip
               bagi setiap kolega untuk berani melawan keterpurukan, mengabaikan kesulitan, menentang seluruh keniscayaan, untuk tumbuh dan berkembangnya kolega
               dari dan untuk Daerah.
