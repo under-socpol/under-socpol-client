@@ -13,7 +13,7 @@ export default function ArticleCard({ href, title, excerpt }: ArticleCardProps) 
         {title}
       </Link>
 
-      <p className="text-sm text-gray-500 leading-8 line-clamp-4">{excerpt}</p>
+      <p className="text-sm text-gray-500 leading-8 line-clamp-4 text-justify">{excerpt}</p>
     </div>
   );
 }

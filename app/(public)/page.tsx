@@ -35,13 +35,21 @@ export default async function Home() {
   return (
     <div className="py-12 mx-auto max-w-screen-lg min-h-[calc(100vh-(4.25rem+3.719rem))] md:min-h-[calc(100vh-(4.25rem+3.469rem))] flex flex-col gap-12">
       <section className="pb-4 border-b border-gray-200 flex flex-col gap-8">
-        <div className="flex flex-col gap-8">
-          <img src="/images/logo.png" alt="logo" className="size-24" />
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col items-center gap-8">
+            <img src="/images/logo.png" alt="logo" className="size-32" />
+
+            <p className="text-lg leading-8 italic text-justify">
+              “Revolusi timbul dengan sendirinya, sebagai hasil dari berbagai keadaan”, begitu kata Tan Malaka, yang kini Under Socpol himpun sebagai prinsip
+              bagi setiap kolega untuk berani melawan keterpurukan, mengabaikan kesulitan, menentang seluruh keniscayaan, untuk tumbuh dan berkembangnya kolega
+              dari dan untuk Daerah.
+            </p>
+          </div>
 
           <div className="flex flex-col gap-4">
             <Link
               href={`/articles/${newestArticleData[0].id}`}
-              className="text-3xl font-bold text-app-text-color hover:text-app-primary-color leading-16 hover:underline"
+              className="text-3xl font-bold text-app-text-color hover:text-app-primary-color leading-16 hover:underline text-justify"
             >
               {newestArticleData[0].title}
             </Link>
@@ -59,7 +67,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <p className="text-sm text-gray-500 leading-8 line-clamp-2">{newestArticleData[0].excerpt}</p>
+        <p className="text-sm text-gray-500 leading-8 line-clamp-2 text-justify">{newestArticleData[0].excerpt}</p>
       </section>
 
       <ArticleCategory href={`/articles/category/Newest`} category="Newest" />
