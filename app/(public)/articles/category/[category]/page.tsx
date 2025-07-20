@@ -44,7 +44,8 @@ export default async function ArticleByCategory({ params, searchParams }: { para
         <div className="self-start flex flex-col gap-8">
           <div className="flex items-center gap-4">
             <img src="/images/logo.png" alt="logo" className="size-8" />
-            <p className="text-3xl text-app-text-color font-bold">{`${category} Article`}</p>
+
+            <p className="text-3xl text-app-text-color font-bold">{`${decodeURIComponent(category)} Article`}</p>
           </div>
           <p className="text-sm text-gray-500 leading-8">
             {category === "Newest"

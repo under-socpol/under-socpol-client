@@ -37,7 +37,7 @@ export default async function Home() {
       <section className="pb-4 border-b border-gray-200 flex flex-col gap-8">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col items-center gap-8">
-            <img src="/images/logo.png" alt="logo" className="size-32" />
+            <img src="/images/logo.png" alt="logo" className="size-24" />
 
             <p className="text-lg leading-8 italic text-justify">
               “Revolusi timbul dengan sendirinya, sebagai hasil dari berbagai keadaan”, begitu kata Tan Malaka, yang kini Under Socpol himpun sebagai prinsip
@@ -49,7 +49,7 @@ export default async function Home() {
           <div className="flex flex-col gap-4">
             <Link
               href={`/articles/${newestArticleData[0].id}`}
-              className="text-3xl font-bold text-app-text-color hover:text-app-primary-color leading-16 hover:underline text-justify"
+              className="text-3xl font-bold text-app-text-color hover:text-app-primary-color leading-16 hover:underline"
             >
               {newestArticleData[0].title}
             </Link>
