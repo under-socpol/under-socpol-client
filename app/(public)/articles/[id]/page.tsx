@@ -152,6 +152,16 @@ function ArticleContentRenderer({ blocks }: { blocks: any[] }) {
               </div>
             );
 
+          case "image": {
+            const { url } = block.data.file;
+
+            return (
+              <figure key={key} className="flex flex-col items-center gap-2">
+                <img src={url} alt={key} className="max-w-full h-auto" loading="lazy" />
+              </figure>
+            );
+          }
+
           default:
             return (
               <pre key={key} className="bg-gray-100 text-xs text-red-600 p-2 overflow-x-auto">

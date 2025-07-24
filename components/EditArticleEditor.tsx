@@ -6,6 +6,8 @@ import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import Quote from "@editorjs/quote";
 import Table from "@editorjs/table";
+import ImageTool from "@editorjs/image";
+import { toast } from "sonner";
 
 interface EditArticleEditorProps {
   editorRef: React.RefObject<EditorJS | null>;
@@ -52,6 +54,61 @@ export default function EditArticleEditor({ editorRef, content, setContent }: Ed
           table: {
             class: Table as any,
             inlineToolbar: true,
+          },
+          image: {
+            class: ImageTool,
+            config: {
+              features: {
+                border: false,
+                caption: false,
+                stretch: false,
+              },
+              uploader: {
+                uploadByFile: async (file: File) => {
+                  const MAX_SIZE_MB = 0.95;
+                  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
+
+                  if (file.size > MAX_SIZE_BYTES) {
+                    toast.error(`The image size must be less than 1 MB`, {
+                      style: {
+                        backgroundColor: "#fff0f0",
+                        borderColor: "#ffe0e1",
+                        borderRadius: 0,
+                        fontFamily: "Merriweather",
+                        color: "#e60000",
+                      },
+                    });
+
+                    const currentBlockIndex = editorRef.current?.blocks.getCurrentBlockIndex();
+
+                    if (currentBlockIndex !== undefined) {
+                      setTimeout(() => {
+                        editorRef.current?.blocks.delete(currentBlockIndex);
+                      }, 2250);
+                    }
+
+                    throw new Error(`The image size must be less than ${MAX_SIZE_MB}MB`);
+                  }
+
+                  return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      resolve({
+                        success: 1,
+                        file: {
+                          url: reader.result as string,
+                        },
+                      });
+                    };
+
+                    reader.onerror = () => reject(new Error("File reading error"));
+
+                    reader.readAsDataURL(file);
+                  });
+                },
+              },
+            },
           },
         },
         onReady() {
